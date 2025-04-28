@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        NAME = "Bravine"
+    }
     stages {
         stage('Build') {
             steps {
@@ -12,6 +14,21 @@ pipeline {
                     subject: "Build Status email",
                     body: "Build is successful!"
                 }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Test started and completed'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "${env.NAME} Deploy started and completed"
+            }
+        }
+        stage('Completed') {
+            steps {
+                echo 'Test started and completed'
             }
         }
     }
